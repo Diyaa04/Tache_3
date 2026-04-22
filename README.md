@@ -40,13 +40,10 @@ The initial call to `pip`is for core `airod` dependencies. The call to `invoke r
 If you are using `conda`:
 ```
 bash
-conda env create -n airoh_env -f environment.yml
-conda activate airoh_env
+conda env create -f environment.yml
+conda activate brainbeats_pre
 invoke setup
 ```
----
-
-
 ---
 ### **Step 2**: Fetch the source data
 
@@ -54,8 +51,6 @@ invoke setup
 bash
 invoke fetch
 ```
-
-This uses Datalad under the hood to retrieve the configured file(s) listed in `invoke.yaml`.
 
 ---
 
