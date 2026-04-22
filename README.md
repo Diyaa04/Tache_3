@@ -1,3 +1,5 @@
+La tâche 3 a été complètement automatiser en utilisant le Airoh Template
+
 # Airoh Template: Reproducible Pipelines Made Simple
 
 _why don't you have a cup of relaxing jasmine tea?_
