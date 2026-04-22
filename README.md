@@ -1,4 +1,4 @@
-La tâche 3 a été complètement automatiser en utilisant le Airoh Template
+La tâche 3 a été complètement automatiser en utilisant le Template fait par Lune Bellec (PhD)
 
 # Airoh Template: Reproducible Pipelines Made Simple
 
@@ -70,49 +70,6 @@ This will execute a full analysis pipeline (simulation + figures).
 
 ---
 
-### **Step 4**: Build and archive a Docker image (optional)
-
-If you want to freeze the environment:
-
-```
-bash
-invoke docker-build
-invoke docker-archive
-```
-
-This will save your image to a `.tar.gz` archive that can later be loaded with `docker-setup`:
-
-```
-bash
-invoke docker-setup
-```
-Note that the name of the docker image is configured through `invoke.yml`.
-
----
-
-### **Step 5**: Run inside container (optional)
-
-Once built or loaded:
-
-```
-bash
-invoke docker-run --task run
-```
-
-This re-runs your pipeline inside the container.
-
----
-
-### **Step 6**: Clean output data
-
-```
-bash
-invoke clean
-```
-
-Removes the output folder listed in `invoke.yaml` under `output_data_dir`.
-
----
 
 ## 🧠 Core Features
 
@@ -121,36 +78,6 @@ Removes the output folder listed in `invoke.yaml` under `output_data_dir`.
 * Optional containerization for full reproducibility
 * Real output notebooks & figures — ready to publish
 
----
-
-## 📦 Using Datalad for Large Files
-
-This template supports `datalad` to manage large assets (e.g., Docker images, datasets). To avoid bloating your Git repository:
-
-1. Make sure the repo is initialized with Datalad:
-
-   ```bash
-   datalad create --force
-   ```
-
-2. Make sure `.gitattributes` is configured to match your needs. For example, this template excludes large Docker archives using:
-
-   ```text
-   *.tar.gz annex.largefiles=(largerthan=10MB)
-   ```
-
-3. Add and save your large files with:
-
-   ```bash
-   datalad add output_data/your-archive.tar.gz
-   datalad save -m "Added archive with git-annex"
-   ```
-
-4. To verify that the file is tracked by `git-annex`, run:
-
-   ```bash
-   git annex whereis output_data/your-archive.tar.gz
-   ```
 
 If you're working with Zenodo or other public sources, you can also configure `invoke.yaml` to fetch and extract archives via `invoke fetch`.
 
@@ -194,15 +121,6 @@ Use `invoke --list` or `invoke --help <task>` for descriptions and usage.
 | `output_data/` | Generated results and figures            |
 | `tasks.py`     | Project-specific invoke entrypoint       |
 | `invoke.yaml`  | Config file for all reusable tasks       |
-
----
-
-## 🧪 Want to use containers?
-
-- Build: invoke docker-build
-- Archive: invoke docker-archive
-- Run: invoke docker-run --task run
-- Setup from archive: invoke docker-setup
 
 ---
 
